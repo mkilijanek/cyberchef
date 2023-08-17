@@ -9,10 +9,10 @@ WORKDIR /app
 
 ARG CYBERCHEF_VERSION
 ENV CYBERCHEF_VERSION=10.5.2
-RUN echo "https://github.com/gchq/CyberChef/releases/downloads/v/${CYBERCHEF_VERSION}/CyberChef_v${CYBERCHEF_VERSION}.zip"
+RUN echo "https://github.com/gchq/CyberChef/releases/download/v/${CYBERCHEF_VERSION}/CyberChef_v${CYBERCHEF_VERSION}.zip"
 
 ARG CHEF_URL
-ENV CHEF_URL =https://github.com/gchq/CyberChef/releases/downloads/v/${CYBERCHEF_VERSION}/CyberChef_v${CYBERCHEF_VERSION}.zip
+ENV CHEF_URL=https://github.com/gchq/CyberChef/releases/download/v/${CYBERCHEF_VERSION}/CyberChef_v${CYBERCHEF_VERSION}.zip
 RUN wget CHEF_URL
 RUN cp CyberChef_v*.zip cyberchef.zip && ls -lh
 RUN unzip cyberchef.zip && ls -lh \
