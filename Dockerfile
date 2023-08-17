@@ -7,8 +7,10 @@ RUN apk --no-cache add ca-certificates \
 
 WORKDIR /app
 
+ARG CYBERCHEF_VERSION
 ENV CYBERCHEF_VERSION=10.5.2
 RUN echo "https://github.com/gchq/CyberChef/releases/downloads/v/${CYBERCHEF_VERSION}/CyberChef_v${CYBERCHEF_VERSION}.zip"
+
 RUN wget "https://github.com/gchq/CyberChef/releases/downloads/v/${CYBERCHEF_VERSION}/CyberChef_v${CYBERCHEF_VERSION}.zip"
 RUN cp CyberChef_v*.zip cyberchef.zip && ls -lh
 RUN unzip cyberchef.zip && ls -lh \
