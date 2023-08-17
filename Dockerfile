@@ -13,7 +13,7 @@ RUN echo "https://github.com/gchq/CyberChef/releases/download/v/${CYBERCHEF_VERS
 
 ARG CHEF_URL
 ENV CHEF_URL=https://github.com/gchq/CyberChef/releases/download/v/${CYBERCHEF_VERSION}/CyberChef_v${CYBERCHEF_VERSION}.zip
-RUN wget CHEF_URL
+RUN wget $CHEF_URL
 RUN cp CyberChef_v*.zip cyberchef.zip && ls -lh
 RUN unzip cyberchef.zip && ls -lh \
   && rm cyberchef.zip
