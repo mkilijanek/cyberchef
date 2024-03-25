@@ -24,7 +24,9 @@ RUN npx grunt prod
 #RUN Cyberchef*.html index.html
 
 RUN npm install http-server -g
+RUN mkdir -p /var/www/cyberchef
 RUN cp -r /home/cyberchef/build/prod/* /var/www/cyberchef
+RUN npx http-server /var/www/cyberchef
 EXPOSE 8080
 
 CMD ["http-server", "-p", "8080"]
