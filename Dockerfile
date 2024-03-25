@@ -14,7 +14,7 @@ RUN git clone -b "v$CYBERCHEF_VERSION" --depth=1 https://github.com/gchq/CyberCh
 
 ENV NODE_OPTIONS="--max-old-space-size=2048"
 RUN npm install
-RUN npm audit fix
+#RUN npm audit fix --prod
 RUN npx grunt prod
 
 
@@ -25,8 +25,8 @@ RUN npx grunt prod
 
 RUN npm install http-server -g
 RUN mkdir -p /var/www/cyberchef
-RUN cp -r /home/cyberchef/build/prod/* /var/www/cyberchef
-RUN http-server /var/www/cyberchef
+RUN cp -r /app/build/prod/* /var/www/cyberchef
+#RUN http-server /var/www/cyberchef
 EXPOSE 8080
 
-CMD ["http-server", "-p", "8080"]
+CMD ["http-server", "/var/www/cyberchef", "-p", "8080"]
